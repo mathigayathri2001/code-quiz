@@ -63,7 +63,7 @@ button.addEventListener("click", function(){
 function setTime() {
     timerInterval = setInterval(function() {
     secondsLeft--;
-    time.innerHTML = "View Highscores " + "Time :" + secondsLeft;
+    time.innerHTML = "View Highscores______ " + "Time :" + secondsLeft;
 
     if(secondsLeft === 0) {
       clearInterval(timerInterval);
@@ -79,7 +79,7 @@ function showquestion(){
        secondsFinished=secondsLeft;
        clearInterval(timerInterval);
        time.innerHTML="";
-       final.innerHTML="<p>"+secondsFinished+"</p>";  
+       //final.innerHTML="<p>"+secondsFinished+"</p>";  
        final.innerHTML+="<h3><p>ALL DONE</p></h3>";
        final.innerHTML+="<p>"+"Your score is :"+secondsFinished+"</p>";
        final.innerHTML+="Enter Initial: ";
