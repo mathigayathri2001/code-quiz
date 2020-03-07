@@ -9,23 +9,30 @@
     <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 <body>
+    <!-- Quiz site page to show the initial Quiz information -->
+    <!-- Each div tag wil be changed based on the Quiz website requirements related to question, answers , timer and result -->
     <div class=container>
-    <h1 id="h1">Coding Quiz Challenge</h1>
-    <div id="div">
-        <p>Answer the following code questions and your time limit is 60 seconds if you are wrong your timer will penalize. Good Luck !! </p>
+       <h1 id="h1">Coding Quiz Challenge</h1>
+       <div id="div">
+          <p>Answer the following code questions and your time limit is 60 seconds if you are wrong your timer will penalize. Good Luck !! </p>
         <button id="start">StartQuiz</button>
     </div>
     
     </div>
+    <!-- div tag to display the timer -->
     <div id="time"></div>
-    <div id=quiz> </div>
-    <div id=done></div>
-    <div id=result></div>
-    <div id=all></div>
-        
-    
-    
 
+    <!-- div tag to display the question and choices -->
+    <div id=quiz> </div>
+
+    <!-- div tag to display the  initial and score -->
+    <div id=done></div>
+
+    <!-- div tag to display the  answer is corret or wrong -->
+    <div id=result></div>
+    
+    <!-- div tag to display the  final result information -->
+    <div id=all></div>
     <script src="script.js"></script>
 </body>
 </html>

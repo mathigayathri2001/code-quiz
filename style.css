@@ -22,9 +22,18 @@ p{
     margin-top: 20px;
 
 }
-#quiz,#done,#all{
+#all{
     text-align: center;
+    font-size: 20px;
 
+}
+#done{
+    text-align: center;
+    font-size: 20px;
+}
+#quiz{
+    text-align: center;
+    font-size: 25px;
 }
 #result{
     text-align: center;

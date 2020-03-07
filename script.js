@@ -1,3 +1,5 @@
+
+/* variables to receive the elements tags from the page */
 let h1     = document.querySelector ('#h1')
 let div    = document.querySelector ('#div')
 let button = document.querySelector ('#start')
@@ -5,18 +7,21 @@ var time   = document.querySelector("#time");
 let quiz   = document.querySelector( '#quiz')
 let result = document.querySelector('#result')
 let final  = document.querySelector('#done')
-let all  = document.querySelector('#all')
+let all    = document.querySelector('#all')
+
+/* variables data manipulation */
 let secondsLeft = 60;
 let secondsFinished =0;
 let timerInterval;
 let highscore;
 let initial; 
 
-
+/* apply style for the header, division and button */
 h1.setAttribute("style", "margin:auto; width:50%; text-align:center;margin-bottom:2%");
 div.setAttribute("style", "margin:auto; width:50%; text-align:center;font-size:bold");
 button.setAttribute("style", "margin:auto; width:30%; text-align:center;");
 
+/* Object to store question, choice and answer */
 let questions = [
   {
     'question': "What does HTML stand for?",
@@ -42,6 +47,7 @@ let questions = [
   }
 ]
 
+/* variables for data manipulation */
 let index=0
 let choices=""
 let correct =0
@@ -52,7 +58,7 @@ let choice=""
 
 
 
-
+/* Initial start quiz button click event will display the question and choices */
 button.addEventListener("click", function(){
   document.querySelector('.container').hidden=true;
   setTime();
@@ -60,6 +66,7 @@ button.addEventListener("click", function(){
 
 })
 
+/* Set the timer for the question and choices */
 function setTime() {
     timerInterval = setInterval(function() {
     secondsLeft--;
@@ -67,11 +74,15 @@ function setTime() {
 
     if(secondsLeft === 0) {
       clearInterval(timerInterval);
+      alert("Times Up !!!")
+      quiz.hidden=true
+      final.innerHTML="<h3><p>ALL DONE</p></h3>";
     }
 
   }, 1000);
 }
 
+/* show the questions and choices */
 function showquestion(){
    if (index >=questions.length){
 
@@ -106,6 +117,7 @@ function showquestion(){
 
 }
 
+/* check the answer and display the result and show the next question */
 function checkAnswer(){
     choices = document.getElementsByName("choices");
 
@@ -130,29 +142,33 @@ function checkAnswer(){
     showquestion();
   }
 
+  /* show the score */
   function showHighScore(){
-     highscore    = "High Score";
-     initial   = document.getElementById("initial").value;
+    highscore    = "High Score";
+    initial   = document.getElementById("initial").value;
     final.innerHTML="";
     result.innerHTML="";
-    all.innerHTML= "<h3>"+highscore+"</h3>";
-    //highscorecon= secondsFinished.toString()+" " +initial;
-    //console.log(secondsFinished);
-
-    all.innerHTML+= "<label id = 'fscore'>"+ "1 - " + initial + " " + secondsFinished+"</label><br><br>";
+    all.innerHTML= "<h3>"+highscore+"</h3>"; 
+    all.innerHTML+="<input type='text' id ='txtinl'> ";
+    all.innerHTML+="<input type='text' id ='txtscore'> <br><br>";
+    //all.innerHTML+= "<label id = 'fscore'>"+ "1 - " + initial + " " + secondsFinished+"</label><br><br>";
     all.innerHTML += "<button onclick='goBack()' 'style = margin:10px'>Go Back</button>  ";
     all.innerHTML += "<button onclick='clearHighScore()'>Clear High Score</button>  ";
-    document.getElementById("fscore").style.border = "thick solid #0000FF";
+    //document.getElementById("fscore").style.border = "thick solid #0000FF";
+    document.getElementById("txtinl").value=initial;
+    document.getElementById("txtscore").value=secondsFinished;
   }
+
+  /* go back to the show question again */
   function goBack(){
     all.innerHTML= "";
     setTime();
     showquestion();
   }
+
+  /* clear the answers */
   function clearHighScore(){
-   //all.innerHTML= "<h3>"+highscore+"</h3>";
-   document.getElementById("fscore").value=""
-  // document.getElementById("txtinl").value="";
-  // //document.getElementById("txtscore").value="";
+   document.getElementById("txtinl").value="";
+   document.getElementById("txtscore").value="";
 
   }
