@@ -142,6 +142,8 @@ function checkAnswer(){
     showquestion();
   }
 
+
+
   /* show the score */
   function showHighScore(){
     highscore    = "High Score";
@@ -151,24 +153,35 @@ function checkAnswer(){
     all.innerHTML= "<h3>"+highscore+"</h3>"; 
     all.innerHTML+="<input type='text' id ='txtinl'> ";
     all.innerHTML+="<input type='text' id ='txtscore'> <br><br>";
-    //all.innerHTML+= "<label id = 'fscore'>"+ "1 - " + initial + " " + secondsFinished+"</label><br><br>";
     all.innerHTML += "<button onclick='goBack()' 'style = margin:10px'>Go Back</button>  ";
     all.innerHTML += "<button onclick='clearHighScore()'>Clear High Score</button>  ";
-    //document.getElementById("fscore").style.border = "thick solid #0000FF";
     document.getElementById("txtinl").value=initial;
     document.getElementById("txtscore").value=secondsFinished;
+    let score = {
+      signedInitial: initial,
+      score: secondsFinished
+    }
+    localStorage.setItem("score", JSON.stringify(score));
+    let lastScore = JSON.parse(localStorage.getItem("score"));
+    console.log(lastScore);
+
+
+
   }
 
   /* go back to the show question again */
   function goBack(){
     all.innerHTML= "";
-    setTime();
-    showquestion();
+    // setTime();
+    // showquestion();
+    location.reload();
   }
 
   /* clear the answers */
   function clearHighScore(){
    document.getElementById("txtinl").value="";
    document.getElementById("txtscore").value="";
+   
 
-  }
+
+ }
